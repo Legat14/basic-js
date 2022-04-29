@@ -11,9 +11,24 @@ const { NotImplementedError } = require('../extensions/index.js');
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  * 
  */
-function getSeason(/* date */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function getSeason(date) {
+  if (!date) {
+    return 'Unable to determine the time of year!';
+  }
+  if (typeof date !== 'object' || Object.entries(date).length > 0) { // нужно добавить условие, что введенное не является датой, чтобы отсесь хитрый момент. Данное условие уже отсекает самый простой момент и самый хитрый момент.
+    throw new NotImplementedError('Invalid date!');
+  }
+  const currentMonth = date.getMonth();
+  const seasons = [[11, 0, 1, 'winter'], [2, 3, 4, 'spring'], [5, 6, 7, 'summer'], [8, 9, 10, 'fall']];
+  let currentSeason;
+  seasons.forEach(season => {
+    season.forEach(month => {
+      if(month === currentMonth) {
+        currentSeason = season[3];
+      }
+    });
+  });
+  return currentSeason;
 }
 
 module.exports = {
