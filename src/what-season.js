@@ -15,7 +15,7 @@ function getSeason(date) {
   if (!date) {
     return 'Unable to determine the time of year!';
   }
-  if (typeof date !== 'object' || Object.entries(date).length > 0) { // нужно добавить условие, что введенное не является датой, чтобы отсесь хитрый момент. Данное условие уже отсекает самый простой момент и самый хитрый момент.
+  if (typeof date !== 'object' || Object.entries(date).length > 0) {
     throw new NotImplementedError('Invalid date!');
   }
   const currentMonth = date.getMonth();
