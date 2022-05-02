@@ -16,7 +16,7 @@ function getSeason(date) {
     return 'Unable to determine the time of year!';
   }
   if (typeof date !== 'object' || Object.entries(date).length > 0) {
-    throw new NotImplementedError('Invalid date!');
+    throw new Error('Invalid date!');
   }
   const currentMonth = date.getMonth();
   const seasons = [[11, 0, 1, 'winter'], [2, 3, 4, 'spring'], [5, 6, 7, 'summer'], [8, 9, 10, 'fall']];
