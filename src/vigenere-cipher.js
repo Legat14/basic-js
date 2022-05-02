@@ -26,6 +26,11 @@ class VigenereCipheringMachine {
   }
 
   encrypt(text, key) {
+
+    if (!text || !key) {
+      throw new Error('Incorrect arguments!');
+    }
+
     let textLength = text.length;
     let fullKey = '';
     const alphaBet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -68,6 +73,9 @@ class VigenereCipheringMachine {
   }
 
   decrypt(encryptedText, key) {
+    if (!encryptedText || !key) {
+      throw new Error('Incorrect arguments!');
+    }
     let textLength = encryptedText.length;
     let fullKey = '';
     const alphaBet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
