@@ -6,24 +6,49 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 const chainMaker = {
   getLength() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return this.linksArr.length;
   },
-  addLink(/* value */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+
+  addLink(value) {
+    if (!this.hasOwnProperty('linksArr')) {
+      this.linksArr = [];
+    }
+    if (value === 'undefined') {
+      value = '';
+    }
+    this.linksArr.push(`${value}`);
+    return this;
   },
-  removeLink(/* position */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+
+  removeLink(position) {
+    if (!position || typeof position !== 'number' || position <= 0 || position >= this.linksArr.length) {
+      this.linksArr = [];
+      throw new Error("You can't remove incorrect link!"); //TODO: почему-то не бросает ошибку
+    }
+
+    this.linksArr.forEach((value, i) => {
+      if (i === position - 1) {
+        this.linksArr.splice(i, 1);
+      }
+    });
+    return this;
   },
+
   reverseChain() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    this.linksArr = this.linksArr.reverse();
+    return this;
   },
+
   finishChain() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    let chain = '';
+    this.linksArr.forEach((value, i) => {
+      if (i !== 0) {
+        chain += '~~';
+      }
+      chain += `( ${value} )`;
+    });
+    this.linksArr = [];
+    return chain;
   }
 };
 
