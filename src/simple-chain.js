@@ -23,7 +23,7 @@ const chainMaker = {
   removeLink(position) {
     if (!position || typeof position !== 'number' || position <= 0 || position >= this.linksArr.length) {
       this.linksArr = [];
-      throw new Error("You can't remove incorrect link!"); //TODO: почему-то не бросает ошибку
+      throw new Error("You can't remove incorrect link!");
     }
 
     this.linksArr.forEach((value, i) => {
